@@ -14,11 +14,7 @@ defmodule Physics.Rocketry do
   import Physics.Laws, only: [gravitational_constant: 0]
   import Planets
 
-  def escape_velocity(:mars),  do: mars  |> escape_velocity
   def escape_velocity(:moon),  do: moon  |> escape_velocity
-  def escape_velocity(:earth), do: earth |> escape_velocity
-  def escape_velocity(:venus), do: venus |> escape_velocity
-
 
   # NOTE
   # The escape velocity is the minimum velocity required to leave

@@ -4,17 +4,17 @@ defmodule PhysicsTest do
   doctest Physics
 
   test "escape velocity of earth is correct" do
-    ev = escape_velocity :earth
+    ev = escape_velocity Planets.select(:earth)
     assert ev == 11.2
   end
 
   test "escape velocity of planet mars is correct" do
-    ev = escape_velocity :mars
+    ev = escape_velocity Planets.select(:mars)
     assert ev == 5.0
   end
 
   test "escape velocity of planet venus is correct" do
-    ev = escape_velocity :venus
+    ev = escape_velocity Planets.select(:venus)
     assert ev == 10.4
   end
 
