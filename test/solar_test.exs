@@ -6,14 +6,14 @@ defmodule SolarTest do
     # NOTE
     # This is an Elixir list of maps
     flares = [
-      %{classification: :X, stations: 10, scale: 99,   date: Timex.iso_triplet({1859, 8, 29})},
-      %{classification: :M, stations: 10, scale: 5.8,  date: Timex.iso_triplet({2015, 1, 12})},
-      %{classification: :M, stations: 6,  scale: 1.2,  date: Timex.iso_triplet({2015, 2, 9})},
-      %{classification: :C, stations: 6,  scale: 3.2,  date: Timex.iso_triplet({2015, 4, 18})},
-      %{classification: :M, stations: 7,  scale: 83.6, date: Timex.iso_triplet({2015, 6, 23})},
-      %{classification: :C, stations: 10, scale: 2.5,  date: Timex.iso_triplet({2015, 7, 4})},
-      %{classification: :X, stations: 2,  scale: 72,   date: Timex.iso_triplet({2012, 7, 23})},
-      %{classification: :X, stations: 4,  scale: 45,   date: Timex.iso_triplet({2003, 11, 4})},
+      %{classification: :X, stations: 10, scale: 99, date: Timex.iso_triplet({1859, 8, 29})},
+      %{classification: :M, stations: 10, scale: 5.8, date: Timex.iso_triplet({2015, 1, 12})},
+      %{classification: :M, stations: 6, scale: 1.2, date: Timex.iso_triplet({2015, 2, 9})},
+      %{classification: :C, stations: 6, scale: 3.2, date: Timex.iso_triplet({2015, 4, 18})},
+      %{classification: :M, stations: 7, scale: 83.6, date: Timex.iso_triplet({2015, 6, 23})},
+      %{classification: :C, stations: 10, scale: 2.5, date: Timex.iso_triplet({2015, 7, 4})},
+      %{classification: :X, stations: 2, scale: 72, date: Timex.iso_triplet({2012, 7, 23})},
+      %{classification: :X, stations: 4, scale: 45, date: Timex.iso_triplet({2003, 11, 4})},
     ]
 
     # NOTE
@@ -45,12 +45,12 @@ defmodule SolarTest do
 
   test "total flare power using recursion", %{data: flares} do
     total = Solar.total_flare_power(flares)
-    assert total == 216911.7
+    assert total == 228611.7
   end
 
   test "total flare power using enums", %{data: flares} do
     total = Solar.total_flare_power_enum(flares)
-    assert total == 216911.7
+    assert total == 228611.7
   end
 
   test "a flare list with comprehensions", %{data: flares} do
@@ -61,6 +61,15 @@ defmodule SolarTest do
   test "a flare list with enums", %{data: flares} do
     list = Solar.flare_list_enums(flares)
     assert 8 == length(list)
+  end
+
+  test "A flare with fewer stations reoprting has a stronger flare power rating", %{data: flares} do
+    [head | _] = flares
+
+    more_stations  = Solar.power(head)
+    fewer_stations = Solar.power(%{head | stations: 3})
+
+    assert fewer_stations > more_stations
   end
 
 end
