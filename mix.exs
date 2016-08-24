@@ -16,7 +16,7 @@ defmodule Physics.Mixfile do
   def application do
     [
       applications: [
-        :logger, 
+        :logger,
         :math,
         :timex
       ]
@@ -35,7 +35,8 @@ defmodule Physics.Mixfile do
   defp deps do
     [
       {:math, "~> 0.2.0"},
-      {:timex, "~> 3.0"}
+      {:timex, "~> 3.0"},
+      {:amnesia, github: "meh/amnesia", tag: :master}
     ]
   end
 end
