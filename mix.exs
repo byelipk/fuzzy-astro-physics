@@ -18,7 +18,9 @@ defmodule Physics.Mixfile do
       applications: [
         :logger,
         :math,
-        :timex
+        :timex,
+        :postgrex,
+        :ecto
       ]
     ]
   end
@@ -36,7 +38,9 @@ defmodule Physics.Mixfile do
     [
       {:math, "~> 0.2.0"},
       {:timex, "~> 3.0"},
-      {:amnesia, github: "meh/amnesia", tag: :master}
+      {:amnesia, github: "meh/amnesia", tag: :master},
+      {:ecto, "~> 2.0.4"},
+      {:postgrex, "~> 0.11.2"}
     ]
   end
 end
