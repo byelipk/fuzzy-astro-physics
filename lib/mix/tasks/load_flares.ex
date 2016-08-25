@@ -3,6 +3,8 @@ defmodule Mix.Tasks.LoadFlares do
   use Timex
 
   def run(_args) do
+    Mix.Task.run "app.start"
+    
     flares = [
       %{classification: "M", stations: 10, scale: 99.0, date: Timex.iso_triplet({1859, 8, 29})},
       %{classification: "M", stations: 10, scale: 5.8,  date: Timex.iso_triplet({2015, 1, 12})},
